@@ -80,26 +80,26 @@ class FolderSync:
         # Iterate through each source and destination.
         for dir in self.list_of_dir:
         
-        	print("CURRENT SOURCE: " + dir[0])
-        	print("CURRENT DESTINATION: " + dir[1])
+            print("CURRENT SOURCE: " + dir[0])
+            print("CURRENT DESTINATION: " + dir[1])
         
             # Create the sync process using the xcopy command.
-        	process = subprocess.Popen(
+            process = subprocess.Popen(
                 ["xcopy", dir[0], dir[1], "/f", "/e", "/d", "/c", "/y"], 
-        		stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                 shell = True, text = True)
         
             # List current source and destination in log file.
-        	output_file.write("CURRENT SOURCE: " + dir[0] + "\n")
-        	output_file.write("CURRENT DESTINATION: " + dir[1] + "\n")
+            output_file.write("CURRENT SOURCE: " + dir[0] + "\n")
+            output_file.write("CURRENT DESTINATION: " + dir[1] + "\n")
         
-        	# Stream the sync output in real-time.
-        	for line in process.stdout:
-            		print(line, end="")
-            		output_file.write(line) # Write each line to text file
-        	
-        	output_file.write("\n")
-        	print("\n")
+            # Stream the sync output in real-time.
+            for line in process.stdout:
+                print(line, end="")
+                output_file.write(line) # Write each line to text file
+            
+            output_file.write("\n")
+            print("\n")
         
         end = time.perf_counter()  # Track total time elapsed
         
@@ -125,11 +125,11 @@ if __name__ == "__main__":
     # This is specifically for the nSpec local folders -> LAN folders.
     folderpaths = [
         ["D:\\Alignments\\", "\\\\cam-vpnap-nas1\\nSpec\\Alignments\\"], 
-    	["D:\\Layouts\\", "\\\\cam-vpnap-nas1\\nSpec\\Layouts\\"],
-    	["D:\\Scans\\", "\\\\cam-vpnap-nas1\\nSpec\\Scans\\"],
-    	["D:\\Templates\\", "\\\\cam-vpnap-nas1\\nSpec\\Templates\\"],
-    	["D:\\Scripts\\", "\\\\cam-vpnap-nas1\\nSpec\\Scripts\\"],
-    	["D:\\Masks\\", "\\\\cam-vpnap-nas1\\nSpec\\Masks\\"]]
+        ["D:\\Layouts\\", "\\\\cam-vpnap-nas1\\nSpec\\Layouts\\"],
+        ["D:\\Scans\\", "\\\\cam-vpnap-nas1\\nSpec\\Scans\\"],
+        ["D:\\Templates\\", "\\\\cam-vpnap-nas1\\nSpec\\Templates\\"],
+        ["D:\\Scripts\\", "\\\\cam-vpnap-nas1\\nSpec\\Scripts\\"],
+        ["D:\\Masks\\", "\\\\cam-vpnap-nas1\\nSpec\\Masks\\"]]
     # The location for saving the log file.
     log_path = "\\\\cam-vpnap-nas1\\nSpec\\File Sync Utility\\Log Files\\"
     sync_inst = FolderSync(folderpaths, log_path, True)
