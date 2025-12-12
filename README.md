@@ -1,2 +1,8 @@
-# nspec-folder-sync
-Script which performs one-way synchronization between local nSpec drive and LAN drive
+# folder-sync
+
+Contains code used to perform one-way synchronization between a list of directories, as well as find unique files between directories for data pipelining.
+
+
+
+
+
