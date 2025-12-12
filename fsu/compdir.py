@@ -1,7 +1,7 @@
 """
--------------
+----------
 compdir.py
--------------
+----------
 
 This module provides a class used to probe two directories for a specific
 file type, and compare those directories.

@@ -1,7 +1,7 @@
 """
---------------
-folder_sync.py
---------------
+----------
+folsync.py
+----------
 
 This module is used to initiate synchronization between two separate folders.
 It uses the Windows 'xcopy' command to perform the sync, so the module
