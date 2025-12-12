@@ -10,8 +10,6 @@ must be used in a Windows environment to work properly.
 Initially, it was coded specifically to perform file sync between the nSpec 
 tool local hard drive and the nSpec shared LAN archive folder.
 This version has been generalized and can receive user arguments.
-If ran as a script, the default behavior is to perform the nSpec folder
-synchronization. Arguments can be passed if imported as a module.
 
 Users provide a list of paired directories representing source and destination
 folders. Any new/modified files in the source folders will be copied to the 
@@ -119,18 +117,3 @@ class FolderSync:
         print("Results log saved to " + rename_log)
         
         input("Press Enter to exit...")
-        
-if __name__ == "__main__":
-    # List of all source and destination paths to perform copying.
-    # This is specifically for the nSpec local folders -> LAN folders.
-    folderpaths = [
-        ["D:\\Alignments\\", "\\\\cam-vpnap-nas1\\nSpec\\Alignments\\"], 
-        ["D:\\Layouts\\", "\\\\cam-vpnap-nas1\\nSpec\\Layouts\\"],
-        ["D:\\Scans\\", "\\\\cam-vpnap-nas1\\nSpec\\Scans\\"],
-        ["D:\\Templates\\", "\\\\cam-vpnap-nas1\\nSpec\\Templates\\"],
-        ["D:\\Scripts\\", "\\\\cam-vpnap-nas1\\nSpec\\Scripts\\"],
-        ["D:\\Masks\\", "\\\\cam-vpnap-nas1\\nSpec\\Masks\\"]]
-    # The location for saving the log file.
-    log_path = "\\\\cam-vpnap-nas1\\nSpec\\File Sync Utility\\Log Files\\"
-    sync_inst = FolderSync(folderpaths, log_path, True)
-    sync_inst.perform_sync()
